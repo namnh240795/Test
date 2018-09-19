@@ -8,6 +8,8 @@ export default class Header extends React.Component {
         return (
             <View style={styles.inputContainer}>
                 <TextInput 
+                    autoCorrect={false}
+                    autoCapitalize='none'
                     style={styles.textInput}
                     underlineColorAndroid='transparent'
                     placeholder='Try search...'
@@ -24,6 +26,22 @@ export default class Header extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                <View style={{ paddingHorizontal: 16, flexDirection: 'row' }}>
+                    <View>
+                        <Text style={{ fontSize: 24, fontWeight: '600', color: '#ffffff'}}>Steel Market</Text>
+                    </View>
+                    <View style={{ flex: 1, flexDirection: 'row-reverse' }}>
+                        <View style={{ paddingRight: 8 }}>
+                            <Ionicons name='ios-options' style={{ color: 'white', fontSize: 24 }} />
+                        </View>
+                        <View style={{ paddingRight: 8 }}>
+                            <Ionicons name='ios-mail' style={{ color: 'white', fontSize: 24 }} />
+                            <View style={{ position: 'absolute', top: -2, left: -8, height: 16, width: 16, borderRadius: 8, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 10, color: 'white'}}>4</Text>
+                            </View>
+                        </View>
+                    </View>
+                </View>
                 {this.renderInputField()}
             </View>
         )

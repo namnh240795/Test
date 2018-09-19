@@ -3,8 +3,8 @@ import { ScrollView, View, Text, StyleSheet, TouchableOpacity, Platform } from '
 
 const data = [
     { type: 0, title: 'All' },
-    { type: 2, title: 'Steel Materials' },
     { type: 1, title: 'Machinary' },
+    { type: 2, title: 'Steel' },  
 ];
 
 export default class Filter extends React.Component {
@@ -16,30 +16,28 @@ export default class Filter extends React.Component {
         const { type } = this.props;
         return (
             <TouchableOpacity
-                key={item.type}
                 onPress={this.handleItemPress.bind(this, item.type)}
                 style={styles.tab}
             >
-                <Text style={[styles.inActiveText, type === item.type && styles.activeText]}>{item.title}</Text>
+                <Text style={this.props.type === item.type ? styles.activeText : styles.inActiveText}>{item.title}</Text>
             </TouchableOpacity>
         )
     }
 
     render() {
         return (
-            <ScrollView 
+            <View 
                 style={styles.tabContainer}
-                horizontal
-                showsHorizontalScrollIndicator={false}
             >
                 {data.map(item => this.renderItem(item))}
-            </ScrollView>
+            </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
     tabContainer: {
+        flexDirection: 'row',
         height: Platform.OS === 'ios' ? 48 : 56,
         borderBottomColor: '#A9A9A9',
         borderBottomWidth: 1,
@@ -56,8 +54,8 @@ const styles = StyleSheet.create({
         color: '#A9A9A9'
     },
     activeText: {
+        color: '#404247',
         fontWeight: '900',
         fontSize: 16,
-        color: '#404247'
     },
 });
